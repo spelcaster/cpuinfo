@@ -1,3 +1,10 @@
+# CPUInfo
+
+This project gives a set of classes and functions to interpret the result of
+CPUID instruction.
+
+![sample output](https://raw.githubusercontent.com/spelcaster/cpuinfo/master/img/sample.jpg)
+
 # How To
 
 ## Build
