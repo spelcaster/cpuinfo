@@ -1,3 +1,33 @@
+# How To
+
+## Build
+
+```shell
+$ make
+```
+
+## Clean environment
+
+```shell
+$ make clean
+```
+
+## Install
+
+```shell
+# make install
+```
+
+## Uninstall
+
+```shell
+# make uninstall
+```
+
+# Dependencies
+
+- [JsonCPP - A C++ library for interacting with JSON](https://github.com/open-source-parsers/jsoncpp)
+
 # References
 
 - [CPUID](https://en.wikipedia.org/wiki/CPUID)
