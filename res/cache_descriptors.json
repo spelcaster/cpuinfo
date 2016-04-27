@@ -1,0 +1,654 @@
+{
+    "intel": [
+        {
+            "value": 0,
+            "hex-code": "0x00",
+            "type": "general",
+            "description": "Null Descriptor, this byte contains no information"
+        },
+        {
+            "value": 1,
+            "hex-code": "0x01",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB Pages, 4-way set associative, 32 entries"
+        },
+        {
+            "value": 2,
+            "hex-code": "0x02",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-MB Pages, fully associative, 2 entries"
+        },
+        {
+            "value": 3,
+            "hex-code": "0x03",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB Pages, 4-way set associative, 64 entries"
+        },
+        {
+            "value": 4,
+            "hex-code": "0x04",
+            "type": "tlb",
+            "description": "Data TLB: 4-MB Pages, 4-way set associative, 8 entries"
+        },
+        {
+            "value": 5,
+            "hex-code": "0x05",
+            "type": "tlb",
+            "description": "Data TLB: 4-MB Pages, 4-way set associative, 32 entries"
+        },
+        {
+            "value": 6,
+            "hex-code": "0x06",
+            "type": "cache",
+            "description": "1st-level instruction cache: 8-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 8,
+            "hex-code": "0x08",
+            "type": "cache",
+            "description": "1st-level instruction cache: 16-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 9,
+            "hex-code": "0x09",
+            "type": "cache",
+            "description": "1st-level Instruction Cache: 32-KB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 10,
+            "hex-code": "0x0a",
+            "type": "cache",
+            "description": "1st-level data cache: 8-KB, 2-way set associative, 32-byte line size"
+        },
+        {
+            "value": 11,
+            "hex-code": "0x0b",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-MB pages, 4-way set associative, 4 entries"
+        },
+        {
+            "value": 12,
+            "hex-code": "0x0c",
+            "type": "cache",
+            "description": "1st-level data cache: 16-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 13,
+            "hex-code": "0x0d",
+            "type": "cache",
+            "description": "1st-level Data Cache: 16-KB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 14,
+            "hex-code": "0x0e",
+            "type": "cache",
+            "description": "1st-level Data Cache: 24-KB, 6-way set associative, 64-byte line size"
+        },
+        {
+            "value": 33,
+            "hex-code": "0x21",
+            "type": "cache",
+            "description": "2nd-level cache: 256-KB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 34,
+            "hex-code": "0x22",
+            "type": "cache",
+            "description": "3rd-level cache: 512-KB, 4-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 35,
+            "hex-code": "0x23",
+            "type": "cache",
+            "description": "3rd-level cache: 1-MB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 37,
+            "hex-code": "0x25",
+            "type": "cache",
+            "description": "3rd-level cache: 2-MB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 41,
+            "hex-code": "0x29",
+            "type": "cache",
+            "description": "3rd-level cache: 4-MB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 44,
+            "hex-code": "0x2c",
+            "type": "cache",
+            "description": "1st-level data cache: 32-KB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 48,
+            "hex-code": "0x30",
+            "type": "cache",
+            "description": "1st-level instruction cache: 32-KB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 64,
+            "hex-code": "0x40",
+            "type": "cache",
+            "description": "No 2nd-level cache or, if processor contains a valid 2nd-level cache, no 3rd-level cache"
+        },
+        {
+            "value": 65,
+            "hex-code": "0x41",
+            "type": "cache",
+            "description": "2nd-level cache: 128-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 66,
+            "hex-code": "0x42",
+            "type": "cache",
+            "description": "2nd-level cache: 256-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 67,
+            "hex-code": "0x43",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 68,
+            "hex-code": "0x44",
+            "type": "cache",
+            "description": "2nd-level cache: 1-MB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 69,
+            "hex-code": "0x45",
+            "type": "cache",
+            "description": "2nd-level cache: 2-MB, 4-way set associative, 32-byte line size"
+        },
+        {
+            "value": 70,
+            "hex-code": "0x46",
+            "type": "cache",
+            "description": "3rd-level cache: 4-MB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 71,
+            "hex-code": "0x47",
+            "type": "cache",
+            "description": "3rd-level cache: 8-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 72,
+            "hex-code": "0x48",
+            "type": "cache",
+            "description": "2nd-level cache: 3-MB, 12-way set associative, 64-byte line size, unified on-die"
+        },
+        {
+            "value": 73,
+            "hex-code": "0x49",
+            "type": "cache",
+            "description": "3rd-level cache: 4-MB, 16-way set associative, 64-byte line size (Intel Xeon processor MP, Family 0Fh, Model 06h); 2nd-level cache: 4-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 74,
+            "hex-code": "0x4a",
+            "type": "cache",
+            "description": "3rd-level cache: 6-MB, 12-way set associative, 64-byte line size"
+        },
+        {
+            "value": 75,
+            "hex-code": "0x4b",
+            "type": "cache",
+            "description": "3rd-level cache: 8-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 76,
+            "hex-code": "0x4c",
+            "type": "cache",
+            "description": "3rd-level cache: 12-MB, 12-way set associative, 64-byte line size"
+        },
+        {
+            "value": 77,
+            "hex-code": "0x4d",
+            "type": "cache",
+            "description": "3rd-level cache: 16-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 78,
+            "hex-code": "0x4e",
+            "type": "cache",
+            "description": "2nd-level cache: 6-MB, 24-way set associative, 64-byte line size"
+        },
+        {
+            "value": 79,
+            "hex-code": "0x4f",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB pages, 32 entries"
+        },
+        {
+            "value": 80,
+            "hex-code": "0x50",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB, 2-MB or 4-MB pages, fully associative, 64 entries"
+        },
+        {
+            "value": 81,
+            "hex-code": "0x51",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB, 2-MB or 4-MB pages, fully associative, 128 entries"
+        },
+        {
+            "value": 82,
+            "hex-code": "0x52",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB, 2-MB or 4-MB pages, fully associative, 256 entries"
+        },
+        {
+            "value": 85,
+            "hex-code": "0x55",
+            "type": "tlb",
+            "description": "Instruction TLB: 2-MB or 4-MB pages, fully associative, 7 entries"
+        },
+        {
+            "value": 86,
+            "hex-code": "0x56",
+            "type": "tlb",
+            "description": "L1 Data TLB: 4-MB pages, 4-way set associative, 16 entries"
+        },
+        {
+            "value": 87,
+            "hex-code": "0x57",
+            "type": "tlb",
+            "description": "L1 Data TLB: 4-KB pages, 4-way set associative, 16 entries"
+        },
+        {
+            "value": 89,
+            "hex-code": "0x59",
+            "type": "tlb",
+            "description": "Data TLB0: 4-KB pages, fully associative, 16 entries"
+        },
+        {
+            "value": 90,
+            "hex-code": "0x5a",
+            "type": "tlb",
+            "description": "Data TLB0: 2-MB or 4-MB pages, 4-way associative, 32 entries"
+        },
+        {
+            "value": 91,
+            "hex-code": "0x5b",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB or 4-MB pages, fully associative, 64 entries"
+        },
+        {
+            "value": 92,
+            "hex-code": "0x5c",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB or 4-MB pages, fully associative, 128 entries"
+        },
+        {
+            "value": 93,
+            "hex-code": "0x5d",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB or 4-MB pages, fully associative, 256 entries"
+        },
+        {
+            "value": 96,
+            "hex-code": "0x60",
+            "type": "cache",
+            "description": "1st-level data cache: 16-KB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 102,
+            "hex-code": "0x66",
+            "type": "cache",
+            "description": "1st-level data cache: 8-KB, 4-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 103,
+            "hex-code": "0x67",
+            "type": "cache",
+            "description": "1st-level data cache: 16-KB, 4-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 104,
+            "hex-code": "0x68",
+            "type": "cache",
+            "description": "1st-level data cache: 32-KB, 4 way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 112,
+            "hex-code": "0x70",
+            "type": "cache",
+            "description": "Trace cache: 12K-uops, 8-way set associative"
+        },
+        {
+            "value": 113,
+            "hex-code": "0x71",
+            "type": "cache",
+            "description": "Trace cache: 16K-uops, 8-way set associative"
+        },
+        {
+            "value": 114,
+            "hex-code": "0x72",
+            "type": "cache",
+            "description": "Trace cache: 32K-uops, 8-way set associative"
+        },
+        {
+            "value": 118,
+            "hex-code": "0x76",
+            "type": "tlb",
+            "description": "Instruction TLB: 2M/4M pages, fully associative, 8 entries"
+        },
+        {
+            "value": 120,
+            "hex-code": "0x78",
+            "type": "cache",
+            "description": "2nd-level cache: 1-MB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 121,
+            "hex-code": "0x79",
+            "type": "cache",
+            "description": "2nd-level cache: 128-KB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 122,
+            "hex-code": "0x7a",
+            "type": "cache",
+            "description": "2nd-level cache: 256-KB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 123,
+            "hex-code": "0x7b",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 124,
+            "hex-code": "0x7c",
+            "type": "cache",
+            "description": "2nd-level cache: 1-MB, 8-way set associative, sectored cache, 64-byte line size"
+        },
+        {
+            "value": 125,
+            "hex-code": "0x7d",
+            "type": "cache",
+            "description": "2nd-level cache: 2-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 127,
+            "hex-code": "0x7f",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 2-way set associative, 64-byte line size"
+        },
+        {
+            "value": 128,
+            "hex-code": "0x80",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 130,
+            "hex-code": "0x82",
+            "type": "cache",
+            "description": "2nd-level cache: 256-KB, 8-way set associative, 32-byte line size"
+        },
+        {
+            "value": 131,
+            "hex-code": "0x83",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 8-way set associative, 32-byte line size"
+        },
+        {
+            "value": 132,
+            "hex-code": "0x84",
+            "type": "cache",
+            "description": "2nd-level cache: 1-MB, 8-way set associative, 32-byte line size"
+        },
+        {
+            "value": 133,
+            "hex-code": "0x85",
+            "type": "cache",
+            "description": "2nd-level cache: 2-MB, 8-way set associative, 32-byte line size"
+        },
+        {
+            "value": 134,
+            "hex-code": "0x86",
+            "type": "cache",
+            "description": "2nd-level cache: 512-KB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 135,
+            "hex-code": "0x87",
+            "type": "cache",
+            "description": "2nd-level cache: 1-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 176,
+            "hex-code": "0xb0",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB Pages, 4-way set associative, 128 entries"
+        },
+        {
+            "value": 177,
+            "hex-code": "0xb1",
+            "type": "tlb",
+            "description": "Instruction TLB: 2-MB pages, 4-way, 8 entries or 4M pages, 4-way, 4 entries"
+        },
+        {
+            "value": 178,
+            "hex-code": "0xb2",
+            "type": "tlb",
+            "description": "Instruction TLB: 4-KB pages, 4-way set associative, 64 entries"
+        },
+        {
+            "value": 179,
+            "hex-code": "0xb3",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB Pages, 4-way set associative, 128 entries"
+        },
+        {
+            "value": 180,
+            "hex-code": "0xb4",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB Pages, 4-way set associative, 256 entries"
+        },
+        {
+            "value": 186,
+            "hex-code": "0xba",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB Pages, 4-way set associative, 64 entries"
+        },
+        {
+            "value":192,
+            "hex-code": "0xc0",
+            "type": "tlb",
+            "description": "Data TLB: 4-KB or 4-MB Pages, 4-way set associative, 8 entries"
+        },
+        {
+            "value": 202,
+            "hex-code": "0xca",
+            "type": "stlb",
+            "description": "Shared 2nd-level TLB: 4 KB pages, 4-way set associative, 512 entries"
+        },
+        {
+            "value": 208,
+            "hex-code": "0xd0",
+            "type": "cache",
+            "description": "3rd-level cache: 512-kB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 209,
+            "hex-code": "0xd1",
+            "type": "cache",
+            "description": "3rd-level cache: 1-MB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 210,
+            "hex-code": "0xd2",
+            "type": "cache",
+            "description": "3rd-level cache: 2-MB, 4-way set associative, 64-byte line size"
+        },
+        {
+            "value": 214,
+            "hex-code": "0xd6",
+            "type": "cache",
+            "description": "3rd-level cache: 1-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 215,
+            "hex-code": "0xd7",
+            "type": "cache",
+            "description": "3rd-level cache: 2-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 216,
+            "hex-code": "0xd8",
+            "type": "cache",
+            "description": "3rd-level cache: 4-MB, 8-way set associative, 64-byte line size"
+        },
+        {
+            "value": 220,
+            "hex-code": "0xdc",
+            "type": "cache",
+            "description": "3rd-level cache: 1.5-MB, 12-way set associative, 64-byte line size"
+        },
+        {
+            "value": 221,
+            "hex-code": "0xdd",
+            "type": "cache",
+            "description": "3rd-level cache: 3-MB, 12-way set associative, 64-byte line size"
+        },
+        {
+            "value": 222,
+            "hex-code": "0xde",
+            "type": "cache",
+            "description": "3rd-level cache: 6-MB, 12-way set associative, 64-byte line size"
+        },
+        {
+            "value": 226,
+            "hex-code": "0xe2",
+            "type": "cache",
+            "description": "3rd-level cache: 2-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 227,
+            "hex-code": "0xe3",
+            "type": "cache",
+            "description": "3rd-level cache: 4-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 228,
+            "hex-code": "0xe4",
+            "type": "cache",
+            "description": "3rd-level cache: 8-MB, 16-way set associative, 64-byte line size"
+        },
+        {
+            "value": 234,
+            "hex-code": "0xea",
+            "type": "cache",
+            "description": "3rd-level cache: 12-MB, 24-way set associative, 64-byte line size"
+        },
+        {
+            "value": 235,
+            "hex-code": "0xeb",
+            "type": "cache",
+            "description": "3rd-level cache: 18-MB, 24-way set associative, 64-byte line size"
+        },
+        {
+            "value": 236,
+            "hex-code": "0xec",
+            "type": "cache",
+            "description": "3rd-level cache: 24-MB, 24-way set associative, 64-byte line size"
+        },
+        {
+            "value": 240,
+            "hex-code": "0xf0",
+            "type": "prefetch",
+            "description": "64-byte Prefetching"
+        },
+        {
+            "value": 241,
+            "hex-code": "0xf1",
+            "type": "prefetch",
+            "description": "128-byte Prefetching"
+        },
+        {
+            "value": 255,
+            "hex-code": "0xff",
+            "type": "general",
+            "description": "CPUID Leaf 2 does not report cache descriptor information; use CPUID Leaf 4 to query cache parameters"
+        }
+    ],
+    "amd": [
+        {
+            "value": 0,
+            "hex-code": "0x00",
+            "type": "general",
+            "description": "L2/L3 cache or TLB is disabled."
+        },
+        {
+            "value": 1,
+            "hex-code": "0x01",
+            "type": "general",
+            "description": "Direct mapped."
+        },
+        {
+            "value": 2,
+            "hex-code": "0x02",
+            "type": "general",
+            "description": "2-way associative."
+        },
+        {
+            "value": 4,
+            "hex-code": "0x04",
+            "type": "general",
+            "description": "4-way associative."
+        },
+        {
+            "value": 6,
+            "hex-code": "0x06",
+            "type": "general",
+            "description": "8-way associative."
+        },
+        {
+            "value": 8,
+            "hex-code": "0x08",
+            "type": "general",
+            "description": "16-way associative."
+        },
+        {
+            "value": 10,
+            "hex-code": "0x0a",
+            "type": "general",
+            "description": "32-way associative."
+        },
+        {
+            "value":11,
+            "hex-code": "0x0b",
+            "type": "general",
+            "description": "48-way associative."
+        },
+        {
+            "value": 12,
+            "hex-code": "0x0c",
+            "type": "general",
+            "description": "64-way associative."
+        },
+        {
+            "value": 13,
+            "hex-code": "0x0d",
+            "type": "general",
+            "description": "96-way associative."
+        },
+        {
+            "value": 14,
+            "hex-code": "0x0e",
+            "type": "general",
+            "description": "128-way associative."
+        },
+        {
+            "value": 15,
+            "hex-code": "0x0f",
+            "type": "general",
+            "description": "Fully associative."
+        }
+    ]
+}
