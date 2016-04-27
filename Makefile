@@ -3,6 +3,9 @@
 #
 # Last modified at     | Modified by     | Description
 
+includedir=/usr/local/include/cpuinfo
+binfile=/usr/local/bin/cpuinfo
+
 # compiler flags
 CFLAGS = -Wall -Wextra -pedantic
 
@@ -41,6 +44,8 @@ TEST_OBJECTS = $(addprefix obj/, $(notdir $(TEST_SOURCES:.cpp=.o)))
 EXECUTABLE = build/cpuinfo
 TEST_EXECUTABLE = build/test_cpuinfo
 
+.PHONY: install uninstall clean clean-test
+
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
@@ -50,6 +55,15 @@ test: $(TEST_SOURCES) $(TEST_EXECUTABLE)
 
 $(TEST_EXECUTABLE): $(TEST_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LFLAGS) -o $@ $(TEST_OBJECTS) $(TEST_LIBS)
+
+install: uninstall
+	mkdir $(includedir)
+	cp -rfv $(EXECUTABLE) $(binfile)
+	cp -rfv res $(includedir)
+	cp -rfv include $(includedir)
+
+uninstall:
+	$(RM) -rfv $(includedir) $(binfile)
 
 # this is a suffix replacement rule for buildings .o's from .cpp's
 # it uses automatic variables:
@@ -61,8 +75,6 @@ obj/%.o:src/%.cpp
 
 obj/%.o:tests/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-.PHONY: clean clean-test
 
 clean:
 	$(RM) $(RESOURCES) $(OBJECTS) $(EXECUTABLE)
