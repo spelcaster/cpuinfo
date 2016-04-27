@@ -118,4 +118,66 @@ bool IntelCpuAdapter::hasFastSystemCall ()
     return false;
 }
 
+/*!
+ * \copydoc CpuAdapter::getCacheDescriptors()
+ */
+std::vector< uint32_t > IntelCpuAdapter::getCacheDescriptors ()
+{
+    std::vector< uint32_t > descriptors;
+    uint32_t times = 0;
+    bool tmp[255];
+    uint32_t reg;
+
+    std::fill(tmp, tmp + 255, false);
+
+    query(0x2);
+    times = getEAX() & 0xff;
+
+    for (uint32_t i = 0; i < times; i++) {
+        reg = getEAX();
+
+        if (!(reg & BIT_31)) {
+            tmp[reg & 0xff] = true;
+            tmp[(reg >> 8) & 0xff] = true;
+            tmp[(reg >> 16) & 0xff] = true;
+            tmp[(reg >> 24) & 0xff] = true;
+        }
+
+        reg = getEBX();
+
+        if (!(reg & BIT_31)) {
+            tmp[reg & 0xff] = true;
+            tmp[(reg >> 8) & 0xff] = true;
+            tmp[(reg >> 16) & 0xff] = true;
+            tmp[(reg >> 24) & 0xff] = true;
+        }
+
+        reg = getECX();
+
+        if (!(reg & BIT_31)) {
+            tmp[reg & 0xff] = true;
+            tmp[(reg >> 8) & 0xff] = true;
+            tmp[(reg >> 16) & 0xff] = true;
+            tmp[(reg >> 24) & 0xff] = true;
+        }
+
+        reg = getEDX();
+
+        if (!(reg & BIT_31)) {
+            tmp[reg & 0xff] = true;
+            tmp[(reg >> 8) & 0xff] = true;
+            tmp[(reg >> 16) & 0xff] = true;
+            tmp[(reg >> 24) & 0xff] = true;
+        }
+        query(0x2);
+    }
+
+    for (uint32_t i = 0; i < 256; i++) {
+        if (tmp[i])
+            descriptors.push_back(i);
+    }
+
+    return descriptors;
+}
+
 }

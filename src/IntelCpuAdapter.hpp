@@ -70,6 +70,11 @@ class IntelCpuAdapter : public CpuAdapter
      * \copydoc CpuAdapter::hasFastSystemCall()
      */
     bool hasFastSystemCall ();
+
+    /*!
+     * \copydoc CpuAdapter::getCacheDescriptors()
+     */
+    std::vector< uint32_t > getCacheDescriptors ();
 };
 
 /**

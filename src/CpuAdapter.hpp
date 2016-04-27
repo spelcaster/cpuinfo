@@ -12,6 +12,7 @@
 
 #include <stdint.h>
 
+#include <vector>
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -210,6 +211,13 @@ class CpuAdapter
      *         false otherwise
      */
     virtual bool hasFastSystemCall () = 0;
+
+    /*!
+     * Get the processor cache descriptors without repetitions
+     *
+     * \return An array of cache descriptors
+     */
+    virtual std::vector< uint32_t > getCacheDescriptors () = 0;
 };
 
 }
