@@ -1,11 +1,37 @@
+#include "../include/functions.hpp"
 #include "../include/IntelCpuAdapter.hpp"
+#include "../include/CacheDescriptor.hpp"
 
 #include <iostream>
 #include <iomanip>
 #include <string>
 
+void show_cpuinfo ();
+
 int main () {
+    uint32_t cores = cpuinfo::getOnlineProcessors();
+
+
+    for (uint32_t i = 0; i < cores; i++) {
+        std::cout << "Processor #" << i << std::endl;
+
+        int rc = cpuinfo::bindToCpu(i);
+
+        if (rc)
+            continue;
+
+        show_cpuinfo();
+    }
+
+    return 0;
+}
+
+void show_cpuinfo ()
+{
     cpuinfo::IntelCpuAdapter *cpuinfo = new cpuinfo::IntelCpuAdapter();
+
+    cpuinfo::CacheDescriptor *cache_descriptor = new cpuinfo::CacheDescriptor();
+    cache_descriptor->loadCacheDescriptor("intel");
 
     cpuinfo->describe();
 
@@ -22,6 +48,11 @@ int main () {
         std::cout << "fast system call is supported" << std::endl;
     }
 
-    return 0;
+    std::vector< uint32_t > descriptors = cpuinfo->getCacheDescriptors();
+
+    std::cout << "Cache Descriptors:" << std::endl;
+    cache_descriptor->describe(descriptors);
+
+    std::cout << std::endl;
 }
 
