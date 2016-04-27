@@ -1,4 +1,4 @@
-#include "IntelCpuAdapter.hpp"
+#include "../include/IntelCpuAdapter.hpp"
 
 #include <iostream>
 #include <iomanip>

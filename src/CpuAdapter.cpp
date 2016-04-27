@@ -1,4 +1,4 @@
-#include "CpuAdapter.hpp"
+#include "../include/CpuAdapter.hpp"
 
 #include <string>
 #include <iostream>

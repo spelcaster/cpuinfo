@@ -1,4 +1,4 @@
-#include "CpuConnector.hpp"
+#include "../include/CpuConnector.hpp"
 
 namespace cpuinfo
 {
