@@ -28,6 +28,16 @@ void CpuConnector::setupRegisters ()
 }
 
 /*!
+ * Set a value to general purpose registers used cpuid instructions
+ *
+ * \return void
+ */
+void CpuConnector::setRegisters (uint32_t *reg)
+{
+    memcpy(&gprs_, reg, kCpuidRegisters * sizeof(uint32_t));
+}
+
+/*!
  * Executes the cpuid instruction
  *
  * \param[in] function_id The function id from cpuid set of functions that
@@ -37,14 +47,12 @@ void CpuConnector::setupRegisters ()
  */
 void CpuConnector::cpuid (uint32_t function_id)
 {
-    setupRegisters();
-
 #ifdef __GNUC__
     __asm__ __volatile__
     (
         "cpuid;"
         : "=a" (gprs_[0]), "=b" (gprs_[1]), "=c" (gprs_[2]), "=d" (gprs_[3])
-        : "a" (function_id)
+        : "a" (function_id), "b" (gprs_[1]), "c" (gprs_[2]), "d" (gprs_[3])
     );
 #else
 #ifndef __x86_64
@@ -57,7 +65,7 @@ void CpuConnector::cpuid (uint32_t function_id)
       "mov    %%ecx, 8(%%edi)\n\t"
       "mov    %%edx, 12(%%edi)\n\t"
       :
-      :"m" (gprs_),"a" (function_id)
+      :"m" (gprs_),"a" (function_id), "b" (gprs_[1]), "c" (gprs_[2]), "d" (gprs_[3])
       :"ebx","ecx","edx","edi"
    );
 #else
@@ -70,7 +78,7 @@ void CpuConnector::cpuid (uint32_t function_id)
       "mov    %%ecx, 8(%%rdi)\n\t"
       "mov    %%edx, 12(%%rdi)\n\t"
       :
-      :"m" (gprs_),"a" (function_id)
+      :"m" (gprs_),"a" (function_id), "b" (gprs_[1]), "c" (gprs_[2]), "d" (gprs_[3])
       :"ebx","ecx","edx","rdi"
    );
 #endif /* __x86_64 */

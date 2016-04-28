@@ -10,14 +10,15 @@
 
 #include <stdint.h>
 
-#include <algorithm>
+#include <iterator>
+#include <cstring>
 
 namespace cpuinfo
 {
 /*!
  * Total of registers used in cpuid instruction (EAX, EBX, ECX and EDX)
  */
-const uint32_t kCpuidRegisters = 4;
+const int kCpuidRegisters = 4;
 
 //! CpuConnector
 /*!
@@ -60,6 +61,13 @@ class CpuConnector
      * \return void
      */
     void setupRegisters ();
+
+    /*!
+     * Set a value to general purpose registers used cpuid instructions
+     *
+     * \return void
+     */
+    void setRegisters (uint32_t *reg);
 
     /*!
      * Method to recover information in registers after executing cpuid
