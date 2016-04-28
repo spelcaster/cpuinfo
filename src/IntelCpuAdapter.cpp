@@ -24,14 +24,46 @@ IntelCpuAdapter::~IntelCpuAdapter ()
 void IntelCpuAdapter::describeCacheDescriptors ()
 {
     uint32_t times = 0;
+    uint32_t function = 0x2;
 
-    query(0x2);
+    query(function);
 
     times = getEAX() & 0xff;
 
-    std::cout << std::hex;
     for (uint32_t i = 0; i < times; i++) {
-        describeRegisters(0x2);
+        query(function);
+
+        describeRegister(function);
+        std::cout << "\t";
+        describeRegisters();
+    }
+}
+
+/*!
+ * Describe cache parameters, this method is called from describe
+ *
+ * \return void
+ */
+void IntelCpuAdapter::describeCacheParameters ()
+{
+    uint32_t reg[kCpuidRegisters];
+    uint32_t function = 0x4;
+    uint32_t i = 0;
+
+    while (true) {
+        std::fill(reg, reg + kCpuidRegisters, 0);
+
+        reg[2] = i;
+        i++;
+
+        query(function, reg);
+
+        if (!(getEAX() & 0xf))
+            break;
+
+        describeRegister(function);
+        std::cout << "\t";
+        describeRegisters();
     }
 }
 
@@ -47,13 +79,24 @@ void IntelCpuAdapter::describe ()
         if (i == 0x2) {
             describeCacheDescriptors();
             continue;
+        } else if (i == 0x4) {
+            describeCacheParameters();
+            continue;
         }
 
-        describeRegisters(i);
+        query(i);
+
+        describeRegister(i);
+        std::cout << "\t";
+        describeRegisters();
     }
 
     for (uint32_t i = 0x80000000; i <= getExtendedHighestFn(); i++) {
-        describeRegisters(i);
+        describeRegister(i);
+        std::cout << "\t";
+
+        query(i);
+        describeRegisters();
     }
 
     std::cout << std::endl;

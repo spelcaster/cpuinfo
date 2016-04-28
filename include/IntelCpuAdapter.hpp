@@ -27,6 +27,13 @@ class IntelCpuAdapter : public CpuAdapter
      */
     void describeCacheDescriptors ();
 
+    /*!
+     * Describe cache parameters, this method is called from describe
+     *
+     * \return void
+     */
+    void describeCacheParameters ();
+
  public:
      /*!
       * IntelCpuAdapter constructor
