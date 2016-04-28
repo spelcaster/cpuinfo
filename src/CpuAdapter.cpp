@@ -89,11 +89,18 @@ void CpuAdapter::setupQuery (uint32_t function_id)
  *
  * \param[in] function_id The function id from cpuid set of functions that
  *                        will be used to execute cpuid
+ * \param[in] reg         registers that will be used in query, if nothing
+ *                        is given then the default value is a nullptr
  *
  * \return void
  */
-void CpuAdapter::query (uint32_t function_id)
+void CpuAdapter::query (uint32_t function_id, uint32_t *reg)
 {
+    conn_->setupRegisters();
+
+    if (reg)
+        conn_->setRegisters(reg);
+
     if (((function_id >= 0x80000000) && (function_id <= highest_extended_fn_))
         || (function_id <= highest_standard_fn_)
     ) {
@@ -122,25 +129,37 @@ uint32_t CpuAdapter::getExtendedHighestFn ()
 }
 
 /*!
- * Execute a function with cpuid instruction and print the function id and
- * the values stored in the register in hexadecimal
- *
- * \param[in] function_id The function id from cpuid set of functions that
- *                        will be used to execute cpuid
+ * Display the stored registers values in hexadecimal
  *
  * \return void
  */
-void CpuAdapter::describeRegisters (const uint32_t function_id)
+void CpuAdapter::describeRegisters ()
 {
-    query(function_id);
-    std::cout << std::hex;
-    std::cout << std::setfill('0') << std::setw(8) << function_id << "\t";
-    std::cout << std::setfill('0') << std::setw(8) << getEAX() << "-";
-    std::cout << std::setfill('0') << std::setw(8) << getEBX() << "-";
-    std::cout << std::setfill('0') << std::setw(8) << getECX() << "-";
-    std::cout << std::setfill('0') << std::setw(8) << getEDX();
-    std::cout << std::dec;
+    describeRegister(getEAX());
+    std::cout << "-";
+
+    describeRegister(getEBX());
+    std::cout << "-";
+
+    describeRegister(getECX());
+    std::cout << "-";
+
+    describeRegister(getEDX());
     std::cout << std::endl;
+}
+
+/*!
+ * Display the value stored in a register in hexadecimal
+ *
+ * \param[in] reg The register that will be displayed
+ *
+ * \return void
+ */
+void CpuAdapter::describeRegister (const uint32_t reg)
+{
+    std::cout << std::hex;
+    std::cout << std::setfill('0') << std::setw(8) << reg;
+    std::cout << std::dec;
 }
 
 /*!

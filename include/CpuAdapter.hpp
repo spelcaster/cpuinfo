@@ -98,10 +98,12 @@ class CpuAdapter
      *
      * \param[in] function_id The function id from cpuid set of functions that
      *                        will be used to execute cpuid
+     * \param[in] reg         registers that will be used in query, if nothing
+     *                        is given then the default value is a nullptr
      *
      * \return void
      */
-    void query (uint32_t function_id);
+    void query (uint32_t function_id, uint32_t *reg = nullptr);
 
     /*!
      * Get the highest standard function supported by the processor
@@ -118,15 +120,20 @@ class CpuAdapter
     uint32_t getExtendedHighestFn ();
 
     /*!
-     * Execute a function with cpuid instruction and print the function id and
-     * the values stored in the register in hexadecimal
-     *
-     * \param[in] function_id The function id from cpuid set of functions that
-     *                        will be used to execute cpuid
+     * Display the stored registers values in hexadecimal
      *
      * \return void
      */
-    void describeRegisters (const uint32_t function_id);
+    void describeRegisters ();
+
+    /*!
+     * Display the value stored in a register in hexadecimal
+     *
+     * \param[in] reg The register that will be displayed
+     *
+     * \return void
+     */
+    void describeRegister (const uint32_t reg);
 
     /*!
      * Transform a 32 bits register in a 4 bytes string using right shift
